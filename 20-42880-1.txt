@@ -1,0 +1,163 @@
+#include <windows.h>
+#include<iostream>
+#include<GL/gl.h>
+#include<GL/glut.h>
+#include<math.h>
+#define PI  3.14159265358979323846
+using namespace std;
+
+ float _move6 = -0.1f; //car
+
+void drawScene(){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0.0,1.0,1.0,0.0);
+    glLoadIdentity(); //Reset the drawing perspective
+    glMatrixMode(GL_MODELVIEW);
+
+    //Road
+
+      glPushMatrix();
+      glBegin(GL_POLYGON);
+      glColor3f(0.698, 0.745, 0.7098);
+      glVertex3f(-1.0f, -0.33f, 0.0f);
+      glVertex3f(1.0f, -0.33f, 0.0f);
+      glVertex3f(1.0f, 0.0f, 0.0f);
+      glVertex3f(-1.0f, 0.0f, 0.0f);
+      glEnd();
+      glPopMatrix();
+
+    //RoadLines
+
+      glPushMatrix();
+      glBegin(GL_POLYGON);
+      glColor3f(1.0, 1.0, 1.0);
+      glVertex3f(-1.0f, -0.166f, 0.0f);
+      glVertex3f(-0.5f, -0.166f, 0.0f);
+      glVertex3f(-0.5f, -0.13f, 0.0f);
+      glVertex3f(-1.0f, -0.13f, 0.0f);
+      glEnd();
+     glBegin(GL_POLYGON);
+      glColor3f(1.0, 1.0, 1.0);
+      glVertex3f(-0.33f, -0.166f, 0.0f);
+      glVertex3f(-0.166f, -0.166f, 0.0f);
+      glVertex3f(-0.166f, -0.13f, 0.0f);
+      glVertex3f(-0.33f, -0.13f, 0.0f);
+      glEnd();
+       glBegin(GL_POLYGON);
+      glColor3f(1.0, 1.0, 1.0);
+      glVertex3f(0.33f, -0.166f, 0.0f);
+      glVertex3f(0.99f, -0.166f, 0.0f);
+      glVertex3f(0.99f, -0.13f, 0.0f);
+      glVertex3f(0.33f, -0.13f, 0.0f);
+      glEnd();
+
+          //car
+
+    glPushMatrix();
+    glTranslatef(_move6, 0.0f, 0.0f);
+    glColor3f(0.94,0.05,0.07);
+    glBegin(GL_POLYGON);
+        glVertex2f(-0.85, 0.0);
+        glVertex2f(-0.55, 0.0);
+        glVertex2f(-0.55, 0.07);
+        glVertex2f(-0.60, 0.07);
+        glVertex2f(-0.65, 0.17);
+        glVertex2f(-0.65, 0.17);
+        glVertex2f(-0.80, 0.17);
+        glVertex2f(-0.85, 0.07);
+       // glVertex2f(-0.85, 0.0);
+    glEnd();
+    glPopMatrix();
+
+//glass
+
+    glColor3f(0.0, 0.0, 0.0);
+    glPushMatrix();
+  glTranslatef(_move6, 0.0f, 0.0f);
+    glBegin(GL_POLYGON);
+        glVertex2f(-0.61, 0.07);
+        glVertex2f(-0.66, 0.16);
+        glVertex2f(-0.79, 0.16);
+        glVertex2f(-0.84, 0.07);
+    glEnd();
+    glPopMatrix();
+
+   glColor3f(0.000, 0.545, 0.545);
+    glPushMatrix();
+    glTranslatef(_move6, 0.0f, 0.0f);
+    glBegin(GL_POLYGON);
+        glVertex2f(-0.73, 0.07);
+        glVertex2f(-0.72, 0.07);
+        glVertex2f(-0.72, 0.16);
+        glVertex2f(-0.73, 0.16);
+    glEnd();
+    glPopMatrix();
+
+//wheel
+
+    glPushMatrix();
+   glTranslatef(_move6, 0.0f, 0.0f);
+        glTranslatef(-0.80,0.01,0);
+        glScalef(0.6,1,1);
+        glColor3f(0.000, 0.000, 0.000);
+        glBegin(GL_POLYGON);
+        for(int i=0;i<200;i++)
+        {
+            float pi=3.1416;
+            float A=(i*2*pi)/200;
+            float r=0.04;
+            float x = r * cos(A);
+            float y = r * sin(A);
+            glVertex2f(x,y );
+        }
+    glEnd();
+    glPopMatrix();
+
+     glPushMatrix();
+  glTranslatef(_move6, 0.0f, 0.0f);
+        glTranslatef(-0.62,0.01,0);
+        glScalef(0.6,1,1);
+        glColor3f(0.000, 0.000, 0.000);
+        glBegin(GL_POLYGON);
+        for(int i=0;i<200;i++)
+        {
+            float pi=3.1416;
+            float A=(i*2*pi)/200;
+            float r=0.04;
+            float x = r * cos(A);
+            float y = r * sin(A);
+            glVertex2f(x,y );
+        }
+    glEnd();
+    glPopMatrix();
+
+
+    glutSwapBuffers();
+}
+
+void update(int value){
+
+    _move6 +=0.01f;
+    if(_move6 -0.663 > 1.0)
+    {
+        _move6 = -1.0;
+    }
+
+   glutPostRedisplay();
+
+    glutTimerFunc(20, update, 0);
+}
+
+
+int main(int argc, char** argv)
+{
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+   glutInitWindowSize(1100, 1100);
+    glutCreateWindow("City By The Lake");
+    glutDisplayFunc(drawScene);
+   glutTimerFunc(12, update, 0);
+    glutMainLoop();
+    return 0;
+
+}
