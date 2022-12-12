@@ -1,0 +1,40 @@
+
+In our project, we have added buildings, trees, lamps, cars, planes, birds, boats, river, clouds, sun, sky, road, bridge. 
+Sun, moving clouds and birds are added in the sky. 
+A plane also added. 
+Road lines with moving vehicles.  
+Train moving under the road on the rail track.
+Buildings in each side of road.
+Lake with a moving boat. 
+Our project is a Lake View in a City project 
+In our project we used 
+
+Name & ID	Contribution
+JANNATUL FERDAUS
+[20-42843-1]	1.	Sky
+2.	SUN
+3.	Moving cloud
+4.	Moving birds
+
+JAHIDUL ISLAM
+[20-42880-1]	
+1.	Road
+2.	Road lines
+3.	Moving Cars bus
+
+MD. MEHEDI HASAN
+[20-43860-2]	1.	Buildings
+2.	trees
+3.	Lake
+4.	Boats
+
+IMRAN HOSSAIN MARUF
+[19-41806-3]	
+1.	Buildings
+2.	Lake
+3.	Bridge
+4.	Down side of the bridge 
+
+
+
+
